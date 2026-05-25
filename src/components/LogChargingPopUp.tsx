@@ -11,7 +11,7 @@ function LogCharging({ShowPopUp, setShowPopUp, setBattery, setKmSinceLastCharge,
                         <input type="number" onKeyUp={(e)=> setNewBattery(Number((e.target as HTMLInputElement).value))} placeholder="100" className="active:outline-none focus:outline-none"/>
                         <span>%</span>
                     </div>
-                    <button onClick={()=> {setShowPopUp(false); logNewBattery(NewBattery, setBattery, setKmSinceLastCharge, setDateOfLastCharge )}} className="bg-outstand mx-auto block w-[45%] p-3 rounded-xl hover:bg-outstand-light transition-all duration-400 text-light hover:border-secondary border-secondary border-1 mt-2 cursor-pointer">Logg</button>
+                    <button onClick={()=> {setShowPopUp(false); logNewBattery(NewBattery, setBattery, setKmSinceLastCharge, setDateOfLastCharge )}} className="bg-outstand mx-auto block w-[45%] p-3 rounded-xl hover:bg-outstand-light transition-all duration-400 text-light mt-2 cursor-pointer">Logg</button>
                 </div>
             </div>
         </>

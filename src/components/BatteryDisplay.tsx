@@ -21,7 +21,7 @@ function BatteryDisplay({Battery, setBattery, setKmSinceLastCharge, setDateOfLas
                     ))}
                 </div>
                 <div>
-                    <button onClick={()=> setShowPopUp(true)} className="bg-outstand mx-auto block w-[45%] p-3 rounded-xl hover:bg-outstand-light transition-all duration-400 text-light hover:border-secondary border-secondary border-1 mt-2 cursor-pointer">Loggfør Lading</button>
+                    <button onClick={()=> setShowPopUp(true)} className="bg-outstand mx-auto block w-[45%] p-3 rounded-xl hover:bg-outstand-light transition-all duration-400 text-light  mt-2 cursor-pointer">Loggfør Lading</button>
                 </div>
             </div>
             <LogCharging ShowPopUp={ShowPopUp} setShowPopUp={setShowPopUp} setBattery={setBattery} setKmSinceLastCharge={setKmSinceLastCharge} setDateOfLastCharge={setDateOfLastCharge}></LogCharging>

@@ -84,7 +84,7 @@ function AddTrip({KmStand, SeasonNow, Battery, setBattery, setKmStand, AvrageKmT
                         <input className="active:outline-none focus:outline-none w-full" type="number" placeholder={Battery ? "0" : String(Battery)} id="BatteryNow" onChange={(e)=> setUserInputBatteryNow(Number((e.target as HTMLInputElement).value))} value={UserInputBatteryNow} required onKeyUp={()=> setUserInputBatteryNowIsChanged(true)}/>
                         <span>%</span>
                     </div>
-                    <input type="submit" value="Logg" className="bg-outstand mx-auto block w-[70%] p-3 rounded-xl hover:bg-outstand-light transition-all duration-400 text-light hover:border-secondary border-secondary border-1 mt-2 cursor-pointer"/>
+                    <input type="submit" value="Logg" className="bg-outstand mx-auto block w-[70%] p-3 rounded-xl hover:bg-outstand-light transition-all duration-400 text-light mt-2 cursor-pointer"/>
                 </form>
             </div>
         </>
