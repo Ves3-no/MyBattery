@@ -1,11 +1,9 @@
-import { useState } from "react";
 import LogCharging from './LogChargingPopUp'
 import { type Dispatch, type SetStateAction } from "react";
 import type { DateOwn } from "../types";
 import BatteryE  from "../assets/battery_android_0_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg?react"
 import BatteryC from "../assets/battery_android_plus_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg?react"
-function BatteryDisplay({Battery, setBattery, setKmSinceLastCharge, setDateOfLastCharge}: {Battery:number, setBattery:Dispatch<SetStateAction<number>>, setKmSinceLastCharge:Dispatch<SetStateAction<number>>, setDateOfLastCharge:Dispatch<SetStateAction<DateOwn>>}){
-    const [ShowBatteryPopUp, setShowBatteryPopUp ]= useState<boolean>(false)
+function BatteryDisplay({Battery, setBattery, setKmSinceLastCharge, setDateOfLastCharge, ShowBatteryPopUp, setShowBatteryPopUp}: {Battery:number, setBattery:Dispatch<SetStateAction<number>>, setKmSinceLastCharge:Dispatch<SetStateAction<number>>, setDateOfLastCharge:Dispatch<SetStateAction<DateOwn>>, ShowBatteryPopUp:boolean, setShowBatteryPopUp:Dispatch<SetStateAction<boolean>>}){
     const activeBlocks = Battery ? Math.floor(Battery / 12.5) : 0;
     return(
         <>

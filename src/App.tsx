@@ -25,6 +25,7 @@ function App() {
       return [];
     }
   });
+  const [ShowBatteryPopUp, setShowBatteryPopUp ]= useState<boolean>(false)
   const [CarName, setCarName] = useState<string>(localStorage.getItem("CarName") ?? "");
   const [DateOfLastCharge, setDateOfLastCharge] = useState<DateOwn>({Month: "", Date: 0}) 
   useEffect(()=>{
@@ -73,10 +74,10 @@ function App() {
           <input type="text" spellCheck={false} className='text-secondary text-4xl font-bold focus:outline-none p-2 w-full' placeholder='Name of you car' value={CarName} onChange={(e)=> setCarName(String((e.target as HTMLInputElement).value))}/>
         </div>
         <InfoDisplay KmStand={KmStand} KmSinceLastCharge={KmSinceLastCharge} DateOfLastCharge={DateOfLastCharge}/>
-        <BatteryDisplay Battery={Battery} setBattery={setBattery} setKmSinceLastCharge={setKmSinceLastCharge} setDateOfLastCharge={setDateOfLastCharge}/>
+        <BatteryDisplay Battery={Battery} setBattery={setBattery} setKmSinceLastCharge={setKmSinceLastCharge} setDateOfLastCharge={setDateOfLastCharge} ShowBatteryPopUp={ShowBatteryPopUp} setShowBatteryPopUp={setShowBatteryPopUp}/>
         <SeasonDisplay SeasonNow={SeasonNow} setSeasonNow={setSeasonNow} AvrageKmList={AvrageKmList}/>
         <PrewData PrevTrips={PrevTrips}/>
-        <NavComp KmStand={KmStand} SeasonNow={SeasonNow} Battery={Battery} setBattery={setBattery} setKmStand={setKmStand} AvrageKmThisSeason={AvrageKmThisSeason} KmSinceLastCharge={KmSinceLastCharge} setKmSinceLastCharge={setKmSinceLastCharge} setPrevTrips={setPrevTrips} PrevTrips={PrevTrips}/>
+        <NavComp KmStand={KmStand} SeasonNow={SeasonNow} Battery={Battery} setBattery={setBattery} setKmStand={setKmStand} AvrageKmThisSeason={AvrageKmThisSeason} KmSinceLastCharge={KmSinceLastCharge} setKmSinceLastCharge={setKmSinceLastCharge} setPrevTrips={setPrevTrips} PrevTrips={PrevTrips} setShowBatteryPopUp={setShowBatteryPopUp}/>
       </div>
     </div>
   )
