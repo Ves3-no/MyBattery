@@ -1,5 +1,5 @@
 import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
-import { type Trip, type Season, type DateOwn} from '../types'
+import { type Trip, type Season} from '../types'
 
 
 function AddTrip({KmStand, SeasonNow, Battery, setBattery, setKmStand, AvrageKmThisSeason, KmSinceLastCharge, setKmSinceLastCharge, setPrevTrips, PrevTrips, ShowPupUp, setShowPupUp}: {
@@ -91,12 +91,7 @@ function AddTrip({KmStand, SeasonNow, Battery, setBattery, setKmStand, AvrageKmT
     )
 }
 function logTrip(SeasonNow: Season,setBattery: Dispatch<SetStateAction<number>>,setKmStand: Dispatch<SetStateAction<number>>,KmSinceLastCharge: number,setKmSinceLastCharge: Dispatch<SetStateAction<number>>,setPrevTrips: Dispatch<SetStateAction<Trip[]>>,PrevTrips: Trip[], UserInputLenghtDriven:number, UserInputBatteryBefore:number, UserInputBatteryNow:number, KmStand:number, UserInputKmBefore:number){
-    const datenow = new Date()
-    const MonthName = datenow.toLocaleString('no-NO', { month: 'long' }); 
-    const date = {
-            Month: MonthName,
-            Date: datenow.getDate()
-        } as DateOwn
+    const date = new Date()
     const thisTrip:Trip = {
             Season: SeasonNow,
             Km: UserInputLenghtDriven,

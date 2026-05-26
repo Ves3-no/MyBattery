@@ -4,9 +4,6 @@ export type Trip = {
     Km:Number
     BatteryUsage:Number,
     KmStand: number
-    Date: DateOwn
+    Date: Date 
 }
-export type DateOwn = {
-    Month: string
-    Date: number
-} 
+

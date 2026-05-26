@@ -4,7 +4,7 @@ import { type Dispatch, type SetStateAction } from "react";
 import NavComp from './components/Nav'
 import BatteryDisplay from './components/BatteryDisplay'
 import SeasonDisplay from './components/SeasonDisplay'
-import type { Season, Trip, DateOwn } from './types'
+import type { Season, Trip } from './types'
 import InfoDisplay from './components/InfoDisplay'
 import PrewData from './components/PrewData';
 function App() {
@@ -27,11 +27,11 @@ function App() {
   });
   const [ShowBatteryPopUp, setShowBatteryPopUp ]= useState<boolean>(false)
   const [CarName, setCarName] = useState<string>(localStorage.getItem("CarName") ?? "");
-  const [DateOfLastCharge, setDateOfLastCharge] = useState<DateOwn>({Month: "", Date: 0}) 
+  const [DateOfLastCharge, setDateOfLastCharge] = useState<Date>(new Date()) 
   useEffect(()=>{
     const savedDate = localStorage.getItem("DateOfLastCharge");
     if (savedDate) {
-      const parsedDate = JSON.parse(savedDate) as DateOwn;
+      const parsedDate = JSON.parse(savedDate) as Date;
       setDateOfLastCharge(parsedDate);
     }
   }, [])
@@ -76,7 +76,7 @@ function App() {
         <InfoDisplay KmStand={KmStand} KmSinceLastCharge={KmSinceLastCharge} DateOfLastCharge={DateOfLastCharge}/>
         <BatteryDisplay Battery={Battery} setBattery={setBattery} setKmSinceLastCharge={setKmSinceLastCharge} setDateOfLastCharge={setDateOfLastCharge} ShowBatteryPopUp={ShowBatteryPopUp} setShowBatteryPopUp={setShowBatteryPopUp}/>
         <SeasonDisplay SeasonNow={SeasonNow} setSeasonNow={setSeasonNow} AvrageKmList={AvrageKmList}/>
-        <PrewData PrevTrips={PrevTrips}/>
+        <PrewData PrevTrips={PrevTrips} setPrevTrips={setPrevTrips} setKmStand={setKmStand} setKmSinceLastCharge={setKmSinceLastCharge} KmSinceLastCharge={KmSinceLastCharge} DateOfLastCharge={DateOfLastCharge} KmStand={KmStand}/>
         <NavComp KmStand={KmStand} SeasonNow={SeasonNow} Battery={Battery} setBattery={setBattery} setKmStand={setKmStand} AvrageKmThisSeason={AvrageKmThisSeason} KmSinceLastCharge={KmSinceLastCharge} setKmSinceLastCharge={setKmSinceLastCharge} setPrevTrips={setPrevTrips} PrevTrips={PrevTrips} setShowBatteryPopUp={setShowBatteryPopUp}/>
       </div>
     </div>

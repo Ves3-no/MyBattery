@@ -1,6 +1,5 @@
 import { useState, type Dispatch, type SetStateAction } from "react";
-import type { DateOwn } from "../types";
-function LogCharging({ShowBatteryPopUp, setShowBatteryPopUp, setBattery, setKmSinceLastCharge, setDateOfLastCharge }: {ShowBatteryPopUp:boolean, setShowBatteryPopUp:Dispatch<SetStateAction<boolean>>, setBattery:Dispatch<SetStateAction<number>>, setKmSinceLastCharge:Dispatch<SetStateAction<number>>, setDateOfLastCharge:Dispatch<SetStateAction<DateOwn>>}){
+function LogCharging({ShowBatteryPopUp, setShowBatteryPopUp, setBattery, setKmSinceLastCharge, setDateOfLastCharge }: {ShowBatteryPopUp:boolean, setShowBatteryPopUp:Dispatch<SetStateAction<boolean>>, setBattery:Dispatch<SetStateAction<number>>, setKmSinceLastCharge:Dispatch<SetStateAction<number>>, setDateOfLastCharge:Dispatch<SetStateAction<Date>>}){
     const [NewBattery, setNewBattery] = useState<number>(0);
     return(
         <>
@@ -17,14 +16,9 @@ function LogCharging({ShowBatteryPopUp, setShowBatteryPopUp, setBattery, setKmSi
         </>
     )
 }  
-function logNewBattery(NewBattery:number, setBattery:Dispatch<SetStateAction<number>>, setKmSinceLastCharge:Dispatch<SetStateAction<number>>, setDateOfLastCharge:Dispatch<SetStateAction<DateOwn>>){
+function logNewBattery(NewBattery:number, setBattery:Dispatch<SetStateAction<number>>, setKmSinceLastCharge:Dispatch<SetStateAction<number>>, setDateOfLastCharge:Dispatch<SetStateAction<Date>>){
     setBattery(NewBattery)
-    const datenow = new Date()
-    const MonthName = datenow.toLocaleString('no-NO', { month: 'long' }); 
-    const date = {
-        Month: MonthName,
-        Date: datenow.getDate()
-    } as DateOwn
+    const date = new Date()
     setDateOfLastCharge(date)
     localStorage.setItem("DateOfLastCharge", JSON.stringify(date))
     setKmSinceLastCharge(0)
