@@ -8,7 +8,7 @@ import Høst from "../assets/rainy_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg?re
 function SeasonDisplay({SeasonNow, setSeasonNow, AvrageKmList}: {SeasonNow:Season, setSeasonNow:Dispatch<SetStateAction<Season>>, AvrageKmList:Number[]}){
     return(
         <>
-            <div className="flex flex-row bg-light w-full rounded-2xl p-7 border-main-light border gap-4 ">
+            <div className="flex flex-row bg-light w-full rounded-2xl py-6 px-4 border-main-light border gap-4 ">
                 <div className={`flex-1 p-2 rounded-xl border flex items-center flex-col ${ SeasonNow == "Vinter" ? " border-main-dark bg-main text-main-light" : "bg-main-light border-transparent text-main"} cursor-pointer`} onClick={()=> ChangeSeason("Vinter", setSeasonNow)}>
                     <Vinter fill="currentColor "/>
                     <p>Vinter</p>
