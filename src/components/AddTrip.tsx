@@ -58,7 +58,7 @@ function AddTrip({KmStand, SeasonNow, Battery, setBattery, setKmStand, AvrageKmT
     return(
         <>
             <div style={{display: ShowPupUp ? "flex" : "none"}} className="absolute bg-gray-800/50 w-full h-full top-0 items-center justify-center">
-                <form onSubmit={(e)=> {e.preventDefault() ;setShowPupUp(false); logTrip( SeasonNow, setBattery, setKmStand, KmSinceLastCharge, setKmSinceLastCharge, setPrevTrips, PrevTrips, UserInputLenghtDriven, UserInputBatteryBefore, UserInputBatteryNow, KmStand)}} className="bg-light border-main p-6 border-main rounded-xl flex-col flex w-[70%] border-2 gap-4 "> 
+                <form onSubmit={(e)=> {e.preventDefault() ;setShowPupUp(false); logTrip( SeasonNow, setBattery, setKmStand, KmSinceLastCharge, setKmSinceLastCharge, setPrevTrips, PrevTrips, UserInputLenghtDriven, UserInputBatteryBefore, UserInputBatteryNow, KmStand, UserInputKmBefore)}} className="bg-light border-main p-6 border-main rounded-xl flex-col flex w-[70%] border-2 gap-4 "> 
                     <label htmlFor="KmBefore" className="text-lg text-main">Din Km-Stand før turen</label>
                     <div className="flex inline-flex p-2 border border-secondary rounded-xl text-dark">
                         <input className="active:outline-none focus:outline-none w-full" type="number" id="KmBefore" onChange={(e)=> setUserInputKmBefore(Number((e.target as HTMLInputElement).value))} value={UserInputKmBefore} />
@@ -90,7 +90,7 @@ function AddTrip({KmStand, SeasonNow, Battery, setBattery, setKmStand, AvrageKmT
         </>
     )
 }
-function logTrip(SeasonNow: Season,setBattery: Dispatch<SetStateAction<number>>,setKmStand: Dispatch<SetStateAction<number>>,KmSinceLastCharge: number,setKmSinceLastCharge: Dispatch<SetStateAction<number>>,setPrevTrips: Dispatch<SetStateAction<Trip[]>>,PrevTrips: Trip[], UserInputLenghtDriven:number, UserInputBatteryBefore:number, UserInputBatteryNow:number, KmStand:number){
+function logTrip(SeasonNow: Season,setBattery: Dispatch<SetStateAction<number>>,setKmStand: Dispatch<SetStateAction<number>>,KmSinceLastCharge: number,setKmSinceLastCharge: Dispatch<SetStateAction<number>>,setPrevTrips: Dispatch<SetStateAction<Trip[]>>,PrevTrips: Trip[], UserInputLenghtDriven:number, UserInputBatteryBefore:number, UserInputBatteryNow:number, KmStand:number, UserInputKmBefore:number){
     const datenow = new Date()
     const MonthName = datenow.toLocaleString('no-NO', { month: 'long' }); 
     const date = {
@@ -105,7 +105,7 @@ function logTrip(SeasonNow: Season,setBattery: Dispatch<SetStateAction<number>>,
             Date: date
     }
     setBattery(UserInputBatteryNow)
-    setKmStand((KmStand + UserInputLenghtDriven))
+    setKmStand((UserInputKmBefore + UserInputLenghtDriven))
     setKmSinceLastCharge(KmSinceLastCharge + UserInputLenghtDriven)
     const Trips = [...PrevTrips, thisTrip];
     setPrevTrips(Trips);
