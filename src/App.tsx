@@ -69,7 +69,7 @@ function App() {
   }, [AvrageKmVinter, AvrageKmVår, AvrageKmSommer, AvrageKmHøst, PrevTrips])
   return (
     <div className='flex flex-col bg-light w-full h-screen overflow-hidden justify-center items-center  '>
-      <div className='aspect-[9/16] h-full max-h-screen max-w-full bg-background flex flex-col p-4 items-center gap-4 min-w-md pb-20 overflow-y-auto'  >
+       <div className='aspect-[9/16] h-full max-h-screen bg-background flex flex-col p-4 items-center gap-4 pb-20 overflow-y-auto mx-auto w-full sm:max-w-[calc(100vh*9/16)]'>
         <div >
           <input type="text" spellCheck={false} className='text-secondary text-4xl font-bold focus:outline-none p-2 w-full' placeholder='Name of you car' value={CarName} onChange={(e)=> setCarName(String((e.target as HTMLInputElement).value))}/>
         </div>
