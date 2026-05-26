@@ -4,7 +4,7 @@ import Rod from "../assets/bolt_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg?react
 function PrewData({PrevTrips}:{PrevTrips:Trip[]}){
     return(
         <>
-            <div className="flex flex-col bg-light w-full rounded-2xl p-7 border-main-light border gap-2 mb-20 ">
+            <div className="flex flex-col bg-light w-full rounded-2xl p-7 border-main-light border gap-2  ">
                 <p className="text-lg font-medium text-main">Dine turer</p>
                 <div className="flex gap-4 flex-col">
                 {
