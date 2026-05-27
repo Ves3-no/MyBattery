@@ -22,7 +22,6 @@ function App() {
   try {
       const trips = JSON.parse(localStorage.getItem("PrevTrips") ?? "[]") as Trip[];
       trips.forEach(t => t.Date = new Date(t.Date));
-      setPrevTrips(trips);
       return trips;
     } catch {
       return [];
