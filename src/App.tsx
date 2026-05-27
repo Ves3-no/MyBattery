@@ -16,11 +16,13 @@ function App() {
   const [AvrageKmVår, setAvrageKmVår] = useState<number>(Number(localStorage.getItem("AvrageKmVår")) ?? 0)
   const [AvrageKmSommer, setAvrageKmSommer] = useState<number >( Number(localStorage.getItem("AvrageKmSommer")) ?? 0)
   const [AvrageKmHøst, setAvrageKmHøst] = useState<number>(Number(localStorage.getItem("AvrageKmHøst")) ?? 0)
-  const [AvrageKmList, setAvrageKmList] = useState<number[]>([])
+  const [AvrageKmList, setAvrageKmList] = useState<number[]>([AvrageKmVinter, AvrageKmVår, AvrageKmSommer, AvrageKmHøst])
   const [KmSinceLastCharge, setKmSinceLastCharge] = useState<number >(Number(localStorage.getItem("KmSinceLastCharge")) ?? 0)
   const [PrevTrips, setPrevTrips] = useState<Trip[]>(() => {
   try {
-      return JSON.parse(localStorage.getItem("PrevTrips") ?? "[]") as Trip[];
+      const trips = JSON.parse(localStorage.getItem("PrevTrips") ?? "[]") as Trip[];
+      trips.forEach(t => t.Date = new Date(t.Date));
+      return trips;
     } catch {
       return [];
     }
@@ -32,11 +34,12 @@ function App() {
     const savedDate = localStorage.getItem("DateOfLastCharge");
     if (savedDate) {
       const parsedDate = JSON.parse(savedDate) as Date;
-      setDateOfLastCharge(parsedDate);
+      setDateOfLastCharge(new Date(parsedDate));
     }
   }, [])
   useEffect(()=>{
     setAvrageKmList([AvrageKmVinter, AvrageKmVår, AvrageKmSommer, AvrageKmHøst])
+    localStorage.setItem("PrevTrips", JSON.stringify(PrevTrips))
   }, [AvrageKmVinter, AvrageKmVår, AvrageKmSommer, AvrageKmHøst])
   useEffect(()=>{
     localStorage.setItem("CarName", CarName)
