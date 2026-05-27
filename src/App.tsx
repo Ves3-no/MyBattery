@@ -74,7 +74,7 @@ function App() {
           <input type="text" spellCheck={false} className='text-secondary text-4xl font-bold focus:outline-none p-2 w-full' placeholder='Name of you car' value={CarName} onChange={(e)=> setCarName(String((e.target as HTMLInputElement).value))}/>
         </div>
         <InfoDisplay KmStand={KmStand} KmSinceLastCharge={KmSinceLastCharge} DateOfLastCharge={DateOfLastCharge}/>
-        <BatteryDisplay Battery={Battery} setBattery={setBattery} setKmSinceLastCharge={setKmSinceLastCharge} setDateOfLastCharge={setDateOfLastCharge} ShowBatteryPopUp={ShowBatteryPopUp} setShowBatteryPopUp={setShowBatteryPopUp}/>
+        <BatteryDisplay Battery={Battery} setBattery={setBattery} setKmSinceLastCharge={setKmSinceLastCharge} setDateOfLastCharge={setDateOfLastCharge} ShowBatteryPopUp={ShowBatteryPopUp} setShowBatteryPopUp={setShowBatteryPopUp} AvrageKmThisSeason={AvrageKmThisSeason}/>
         <SeasonDisplay SeasonNow={SeasonNow} setSeasonNow={setSeasonNow} AvrageKmList={AvrageKmList}/>
         <PrewData PrevTrips={PrevTrips} setPrevTrips={setPrevTrips} setKmStand={setKmStand} setKmSinceLastCharge={setKmSinceLastCharge} KmSinceLastCharge={KmSinceLastCharge} DateOfLastCharge={DateOfLastCharge} KmStand={KmStand}/>
         <NavComp KmStand={KmStand} SeasonNow={SeasonNow} Battery={Battery} setBattery={setBattery} setKmStand={setKmStand} AvrageKmThisSeason={AvrageKmThisSeason} KmSinceLastCharge={KmSinceLastCharge} setKmSinceLastCharge={setKmSinceLastCharge} setPrevTrips={setPrevTrips} PrevTrips={PrevTrips} setShowBatteryPopUp={setShowBatteryPopUp}/>

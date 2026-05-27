@@ -2,7 +2,7 @@ import LogCharging from './LogChargingPopUp'
 import { type Dispatch, type SetStateAction } from "react";
 import BatteryE  from "../assets/battery_android_0_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg?react"
 import BatteryC from "../assets/battery_android_plus_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg?react"
-function BatteryDisplay({Battery, setBattery, setKmSinceLastCharge, setDateOfLastCharge, ShowBatteryPopUp, setShowBatteryPopUp}: {Battery:number, setBattery:Dispatch<SetStateAction<number>>, setKmSinceLastCharge:Dispatch<SetStateAction<number>>, setDateOfLastCharge:Dispatch<SetStateAction<Date>>, ShowBatteryPopUp:boolean, setShowBatteryPopUp:Dispatch<SetStateAction<boolean>>}){
+function BatteryDisplay({Battery, setBattery, setKmSinceLastCharge, setDateOfLastCharge, ShowBatteryPopUp, setShowBatteryPopUp, AvrageKmThisSeason}: {Battery:number, setBattery:Dispatch<SetStateAction<number>>, setKmSinceLastCharge:Dispatch<SetStateAction<number>>, setDateOfLastCharge:Dispatch<SetStateAction<Date>>, ShowBatteryPopUp:boolean, setShowBatteryPopUp:Dispatch<SetStateAction<boolean>>, AvrageKmThisSeason:number}){
     const activeBlocks = Battery ? Math.floor(Battery / 12.5) : 0;
     return(
         <>
@@ -19,6 +19,7 @@ function BatteryDisplay({Battery, setBattery, setKmSinceLastCharge, setDateOfLas
                         <div className="BatteyProsentageBlock flex-1 bg-main-light h-13 rounded-xl cursor-pointer" key={i} ></div>
                     ))}
                 </div>
+                <div><h1 className="text-dark font-bold text-2xl">{String(Number((AvrageKmThisSeason/100)*Battery))}%</h1></div>
                 <div>
                     <button onClick={()=> setShowBatteryPopUp(true)} className="bg-outstand mx-auto block w-[55%] p-3 rounded-xl hover:bg-outstand-light transition-all duration-400 text-light  mt-2 cursor-pointer flex items-center justify-center gap-2"><BatteryC fill="currentColor " className="translate-y-[1px]"/>Loggfør Lading</button>
                 </div>
