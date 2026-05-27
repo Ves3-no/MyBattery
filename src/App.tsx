@@ -16,7 +16,7 @@ function App() {
   const [AvrageKmVår, setAvrageKmVår] = useState<number>(Number(localStorage.getItem("AvrageKmVår")) ?? 0)
   const [AvrageKmSommer, setAvrageKmSommer] = useState<number >( Number(localStorage.getItem("AvrageKmSommer")) ?? 0)
   const [AvrageKmHøst, setAvrageKmHøst] = useState<number>(Number(localStorage.getItem("AvrageKmHøst")) ?? 0)
-  const [AvrageKmList, setAvrageKmList] = useState<number[]>([])
+  const [AvrageKmList, setAvrageKmList] = useState<number[]>([AvrageKmVinter, AvrageKmVår, AvrageKmSommer, AvrageKmHøst])
   const [KmSinceLastCharge, setKmSinceLastCharge] = useState<number >(Number(localStorage.getItem("KmSinceLastCharge")) ?? 0)
   const [PrevTrips, setPrevTrips] = useState<Trip[]>(() => {
   try {
@@ -39,6 +39,7 @@ function App() {
   }, [])
   useEffect(()=>{
     setAvrageKmList([AvrageKmVinter, AvrageKmVår, AvrageKmSommer, AvrageKmHøst])
+    localStorage.setItem("PrevTrips", JSON.stringify(PrevTrips))
   }, [AvrageKmVinter, AvrageKmVår, AvrageKmSommer, AvrageKmHøst])
   useEffect(()=>{
     localStorage.setItem("CarName", CarName)
