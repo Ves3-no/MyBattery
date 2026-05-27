@@ -15,8 +15,8 @@ function PrewData({PrevTrips, setPrevTrips, setKmStand, setKmSinceLastCharge, Km
                                 <Rod className="text-main bg-main-light rounded-[50%] aspect-[1/1] h-full w-auto p-3" fill="currentColor "/>
                                 <div className="flex justify-between w-100 items-center">
                                     <div>
-                                        <h1 className="text-dark"><span>{String(Trip.Km)}km</span> · <span>{String(Trip.BatteryUsage)}%</span></h1>
-                                        <p className="text-xs text-main">{String(Trip.Date.getDate())}. {Trip.Date.toLocaleDateString('no-NO', { month: 'long' })} · {String(Trip.KmStand)}km</p>
+                                        <h1 className="text-dark"><span>{String(Math.round(Number(Trip.Km)))}km</span> · <span>{String(Trip.BatteryUsage)}%</span></h1>
+                                        <p className="text-xs text-main">{String(Trip.Date.getDate())}. {Trip.Date.toLocaleDateString('no-NO', { month: 'long' })} · {String(Math.round(Number(Trip.KmStand)))}km</p>
                                     </div>
                                     <button onClick={()=> DeleteFunc(Trip, index, PrevTrips, setPrevTrips, setKmStand, setKmSinceLastCharge, KmSinceLastCharge, DateOfLastCharge, KmStand)}><Delete fill="currentColor" className="text-red-600 hover:text-red-400 cursor-pointer"/></button>
                                 </div>
