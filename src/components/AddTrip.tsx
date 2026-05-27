@@ -91,7 +91,7 @@ function AddTrip({KmStand, SeasonNow, Battery, setBattery, setKmStand, AvrageKmT
     )
 }
 function logTrip(SeasonNow: Season,setBattery: Dispatch<SetStateAction<number>>,setKmStand: Dispatch<SetStateAction<number>>,KmSinceLastCharge: number,setKmSinceLastCharge: Dispatch<SetStateAction<number>>,setPrevTrips: Dispatch<SetStateAction<Trip[]>>,PrevTrips: Trip[], UserInputLenghtDriven:number, UserInputBatteryBefore:number, UserInputBatteryNow:number, KmStand:number, UserInputKmBefore:number){
-    const date = new Date()
+    const date = new Date() as Date
     const thisTrip:Trip = {
             Season: SeasonNow,
             Km: UserInputLenghtDriven,
