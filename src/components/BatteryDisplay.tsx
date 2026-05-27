@@ -6,12 +6,12 @@ function BatteryDisplay({Battery, setBattery, setKmSinceLastCharge, setDateOfLas
     const activeBlocks = Battery ? Math.floor(Battery / 12.5) : 0;
     return(
         <>
-            <div className="flex flex-col bg-light w-full rounded-2xl p-7 border-main-light border gap-2">
+            <div className="flex flex-col bg-light w-full rounded-2xl px-5 py-7 border-main-light border gap-2">
                 <div className="flex flex-row justify-between w-full items-baseline ">
                     <h3 className="text-black text-2xl font-bold flex items-center gap-1"><BatteryE fill="currentColor " className="translate-y-[1px]"/> Batteri</h3>
                     <h3 className="text-dark font-bold text-2xl">{String(Battery)}%</h3>
                 </div>
-                <div className="w-full flex flex-row gap-2 justfy-center items-center">
+                <div className="w-full flex flex-row gap-[6px] justfy-center items-center">
                     {Array.from({ length: activeBlocks }, (_, i) => (
                         <div className="BatteyProsentageBlock bg-battery flex-1 h-13 rounded-xl hover:opacity-70 cursor-pointer" key={i} ></div>
                     ))}
