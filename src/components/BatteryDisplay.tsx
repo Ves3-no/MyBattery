@@ -19,7 +19,7 @@ function BatteryDisplay({Battery, setBattery, setKmSinceLastCharge, setDateOfLas
                         <div className="BatteyProsentageBlock flex-1 bg-main-light h-13 rounded-xl cursor-pointer" key={i} ></div>
                     ))}
                 </div>
-                <div><h1 className="text-dark font-bold text-2xl">{String(Number((AvrageKmThisSeason/100)*Battery))}%</h1></div>
+                <div><h1 className="text-dark font-bold text-2xl">{String(Math.round(Number((AvrageKmThisSeason/100)*Battery)))}<span className='text-main text-xs'>Km</span></h1></div>
                 <div>
                     <button onClick={()=> setShowBatteryPopUp(true)} className="bg-outstand mx-auto block w-[55%] p-3 rounded-xl hover:bg-outstand-light transition-all duration-400 text-light  mt-2 cursor-pointer flex items-center justify-center gap-2"><BatteryC fill="currentColor " className="translate-y-[1px]"/>Loggfør Lading</button>
                 </div>
