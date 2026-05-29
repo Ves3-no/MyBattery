@@ -9,7 +9,7 @@ function PrewData({PrevTrips, setPrevTrips, setKmStand, setKmSinceLastCharge, Km
                 <p className="text-lg font-medium text-main">Dine turer</p>
                 <div className="flex gap-4 flex-col">
                 {
-                    PrevTrips.map((Trip, index)=>{
+                    PrevTrips.toReversed().map((Trip, index)=>{
                         return(
                             <div key={index} className="flex flex-row gap-4 border-y py-2 border-main-light w-[100%] items-center">
                                 <Rod className="text-main bg-main-light rounded-[50%] aspect-[1/1] h-full p-2 w-auto" fill="currentColor "/>
