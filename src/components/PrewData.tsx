@@ -29,6 +29,7 @@ function PrewData({PrevTrips, setPrevTrips, setKmStand, setKmSinceLastCharge, Km
 }
 function DeleteFunc(Trip:Trip , index:number, PrevTrips:Trip[], setPrevTrips:Dispatch<SetStateAction<Trip[]>>, setKmStand:Dispatch<SetStateAction<number>>, setKmSinceLastCharge:Dispatch<SetStateAction<number>>, KmSinceLastCharge:number, DateOfLastCharge:Date, KmStand:number){
     const list = PrevTrips;
+    list.reverse()
     list.splice(index, 1)
     setPrevTrips(list)
     setKmStand(KmStand - Number(Trip.Km))
