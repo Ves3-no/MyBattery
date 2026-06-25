@@ -32,6 +32,7 @@ function DeleteFunc(Trip:Trip , index:number, PrevTrips:Trip[], setPrevTrips:Dis
     list.splice(index, 1)
     setPrevTrips(list)
     setKmStand(KmStand - Number(Trip.Km))
+    localStorage.setItem("PrevTrips", JSON.stringify(list))
     if (Trip.Date >= DateOfLastCharge) {
         setKmSinceLastCharge(KmSinceLastCharge - Number(Trip.Km))
     }
