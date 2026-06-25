@@ -6,4 +6,4 @@ export type Trip = {
     KmStand: number
     Date: Date 
 }
-
+export type TypePage = "Main" | "Settings"

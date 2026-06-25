@@ -4,7 +4,8 @@ import { type Dispatch, type SetStateAction } from "react";
 import NavComp from './components/Nav'
 import BatteryDisplay from './components/BatteryDisplay'
 import SeasonDisplay from './components/SeasonDisplay'
-import type { Season, Trip } from './types'
+import type { Season, Trip, TypePage } from './types'
+import Settings from './Pages/Settings';
 import InfoDisplay from './components/InfoDisplay'
 import PrewData from './components/PrewData';
 function App() {
@@ -19,7 +20,7 @@ function App() {
   const [AvrageKmList, setAvrageKmList] = useState<number[]>([AvrageKmVinter, AvrageKmVår, AvrageKmSommer, AvrageKmHøst])
   const [KmSinceLastCharge, setKmSinceLastCharge] = useState<number >(Number(localStorage.getItem("KmSinceLastCharge")) ?? 0)
   const [PrevTrips, setPrevTrips] = useState<Trip[]>(() => {
-  try {
+    try {
       const trips = JSON.parse(localStorage.getItem("PrevTrips") ?? "[]") as Trip[];
       trips.forEach(t => t.Date = new Date(t.Date));
       return trips;
@@ -70,9 +71,11 @@ function App() {
   useEffect(()=>{
     CalcAvrage(setAvrageKmVinter,setAvrageKmVår,setAvrageKmSommer,setAvrageKmHøst,PrevTrips,SeasonNow)
   }, [AvrageKmVinter, AvrageKmVår, AvrageKmSommer, AvrageKmHøst, PrevTrips])
+  const [page, setPage] = useState<TypePage>("Main")
   return (
     <div className='flex flex-col bg-light w-full h-screen overflow-hidden justify-center items-center  '>
-       <div className='aspect-[9/16] h-full max-h-screen bg-background flex flex-col p-4 items-center gap-4 pb-20 overflow-y-auto mx-auto w-full sm:w-[calc(100vh*9/16)] sm:min-w-[300px]'>
+       <div className='aspect-9/16 h-full max-h-screen bg-background flex flex-col p-4 items-center gap-4 pb-20 overflow-y-auto mx-auto w-full sm:w-[calc(100vh*9/16)] sm:min-w-75'>
+        {page == "Main" ? <>
         <div >
           <input type="text" spellCheck={false} className='text-secondary text-4xl font-bold focus:outline-none p-2 w-full' placeholder='Name of you car' value={CarName} onChange={(e)=> setCarName(String((e.target as HTMLInputElement).value))}/>
         </div>
@@ -80,7 +83,11 @@ function App() {
         <BatteryDisplay Battery={Battery} setBattery={setBattery} setKmSinceLastCharge={setKmSinceLastCharge} setDateOfLastCharge={setDateOfLastCharge} ShowBatteryPopUp={ShowBatteryPopUp} setShowBatteryPopUp={setShowBatteryPopUp} AvrageKmThisSeason={AvrageKmThisSeason}/>
         <SeasonDisplay SeasonNow={SeasonNow} setSeasonNow={setSeasonNow} AvrageKmList={AvrageKmList}/>
         <PrewData PrevTrips={PrevTrips} setPrevTrips={setPrevTrips} setKmStand={setKmStand} setKmSinceLastCharge={setKmSinceLastCharge} KmSinceLastCharge={KmSinceLastCharge} DateOfLastCharge={DateOfLastCharge} KmStand={KmStand}/>
-        <NavComp KmStand={KmStand} SeasonNow={SeasonNow} Battery={Battery} setBattery={setBattery} setKmStand={setKmStand} AvrageKmThisSeason={AvrageKmThisSeason} KmSinceLastCharge={KmSinceLastCharge} setKmSinceLastCharge={setKmSinceLastCharge} setPrevTrips={setPrevTrips} PrevTrips={PrevTrips} setShowBatteryPopUp={setShowBatteryPopUp}/>
+        </>
+        : 
+        <Settings KmStand={KmStand} setKmStand={setKmStand}/>
+        }
+        <NavComp KmStand={KmStand} SeasonNow={SeasonNow} Battery={Battery} setBattery={setBattery} setKmStand={setKmStand} AvrageKmThisSeason={AvrageKmThisSeason} KmSinceLastCharge={KmSinceLastCharge} setKmSinceLastCharge={setKmSinceLastCharge} setPrevTrips={setPrevTrips} PrevTrips={PrevTrips} setShowBatteryPopUp={setShowBatteryPopUp} setPage={setPage}/>
       </div>
     </div>
   )
